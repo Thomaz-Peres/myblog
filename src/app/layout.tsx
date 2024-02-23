@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, 'w-full')}>
-        <ThemeProvider attribute="class" disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="pt-6 max-w-4xl px-5 mx-auto">
             <Header></Header>
             <div className="mt-20">{children}</div>

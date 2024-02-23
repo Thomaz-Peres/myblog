@@ -9,7 +9,7 @@ import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 export function Header() {
     return (
         <Menubar>
-            <MenubarMenu>
+            {/* <MenubarMenu>
                 <MenubarTrigger>
                     <a href="./about"> About </a>
                 </MenubarTrigger>
@@ -18,7 +18,7 @@ export function Header() {
                 <MenubarTrigger>
                     <a href="./posts"> Posts </a>
                 </MenubarTrigger>
-            </MenubarMenu>
+            </MenubarMenu> */}
             <MenubarMenu>
                 <MenubarTrigger>
                     <a href="https://www.github.com/Thomaz-Peres"><GitHubLogoIcon className="size-5" /> </a>

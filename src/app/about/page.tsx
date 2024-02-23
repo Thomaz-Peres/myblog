@@ -1,3 +1,8 @@
 export default function Page() {
-  return <p>About Page</p>;
+  return (
+    <div>
+      <h2>Welcome!</h2>
+      <p>My name is Thomaz Peres, I am a </p>
+    </div>
+  );
 }

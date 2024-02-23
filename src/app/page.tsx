@@ -1,7 +1,7 @@
 'use client'
 
 import { Separator } from "@/components/ui/separator";
-import { ArchiveIcon } from '@radix-ui/react-icons'
+import { ArchiveIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 
 export default function Home() {
   return (
@@ -13,14 +13,17 @@ export default function Home() {
       <Separator className="my-5" />
       <div>
         <h3 className="text-lg font-bold mb-2">Posts</h3>
+        <p className="italic underline"><a href="/posts"> Ver mais -></a></p>
       </div>
-      <Separator className="my-5" />
-      {/* <div>
+      {/* <Separator className="my-5" />
+      <div>
         <h3 className="text-lg font-bold mb-2">Books</h3>
       </div> */}
       <Separator className="my-5" />
       <div>
         <h3 className="text-lg font-bold mb-2">Projects</h3>
+
+        <p className="italic underline"><a href="/projects"> Ver mais -></a></p>
       </div>
     </div>
   );
