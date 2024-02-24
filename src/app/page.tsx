@@ -13,7 +13,7 @@ export default function Home() {
       <Separator className="my-5" />
       <div>
         <h3 className="text-lg font-bold mb-2">Posts</h3>
-        <p className="italic underline"><a href="/posts"> Ver mais -></a></p>
+        <p className="italic underline"><a href="/posts"> Ver mais {'->'}</a></p>
       </div>
       {/* <Separator className="my-5" />
       <div>
@@ -23,7 +23,7 @@ export default function Home() {
       <div>
         <h3 className="text-lg font-bold mb-2">Projects</h3>
 
-        <p className="italic underline"><a href="/projects"> Ver mais -></a></p>
+        <p className="italic underline"><a href="/projects"> Ver mais {'->'} </a></p>
       </div>
     </div>
   );
