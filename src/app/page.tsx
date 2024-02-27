@@ -1,21 +1,7 @@
 'use client'
 
 import { ListCard } from "@/components/listCard";
-
-const projectsList = [
-  {
-    title: 'Teste',
-    description: 'Teste',
-    link: 'https://github.com/Thomaz-Peres',
-    dateTime: new Date('02/26/2024')
-  },
-  {
-    title: 'Teste',
-    description: 'Teste',
-    link: 'https://github.com/Thomaz-Peres',
-    dateTime: new Date('02/26/2024')
-  },
-];
+import { projectsList } from "@/utils/projectlist";
 
 export default function Home() {
   return (
@@ -25,7 +11,7 @@ export default function Home() {
         section="Posts"
         titleLink="/posts"
         titleText="Posts"
-        list={projectsList}
+        list={[]}
       />
 
       {/*
