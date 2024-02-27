@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Table, TableHead, TableHeader } from "@/components/ui/table";
-import { Header } from "@/components/Header";
+import { ThemeProvider } from "@/components/themeProvider";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, 'w-full')}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="pt-6 max-w-4xl px-5 mx-auto">
+          <div className="mt-20 pt-6 max-w-4xl px-5 mx-auto">
             <Header></Header>
-            <div className="mt-20">{children}</div>
+            <div className="mt-5">{children}</div>
+            <Footer></Footer>
           </div>
         </ThemeProvider>
       </body>

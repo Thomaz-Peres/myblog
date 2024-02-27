@@ -1,50 +1,47 @@
 'use client'
 
-import { Separator } from "@/components/ui/separator";
-import { ArchiveIcon, ChevronRightIcon } from '@radix-ui/react-icons'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { ListCard } from "@/components/listCard";
+
+const projectsList = [
+  {
+    title: 'Teste',
+    description: 'Teste',
+    link: 'https://github.com/Thomaz-Peres',
+    dateTime: new Date('02/26/2024')
+  },
+  {
+    title: 'Teste',
+    description: 'Teste',
+    link: 'https://github.com/Thomaz-Peres',
+    dateTime: new Date('02/26/2024')
+  },
+];
 
 export default function Home() {
   return (
     <div>
-      <div>
-        <h2 className="text-4xl font-bold mb-2">Thomaz Peres</h2>
-        <p>Software Engineer</p>
-      </div>
-      <Separator className="my-5" />
-      <div>
-        <h3 className="text-lg font-bold mb-2">Posts</h3>
-        <p className="italic underline"><a href="/posts"> Ver mais {'->'}</a></p>
-      </div>
-      {/* <Separator className="my-5" />
+
+      <ListCard
+        section="Posts"
+        titleLink="/posts"
+        titleText="Posts"
+        list={projectsList}
+      />
+
+      {/*
       <div>
         <h3 className="text-lg font-bold mb-2">Books</h3>
       </div> */}
-      <Separator className="my-5" />
-      <div>
-        <h3 className="text-lg font-bold mb-2">Projects</h3>
-        <Card>
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
 
-        <p className="italic underline"><a href="/projects"> Ver mais {'->'} </a></p>
-      </div>
+      <div className="my-5 w-full border-t hr border-black-300" />
+
+      <ListCard
+        section="Projects"
+        titleLink="/projects"
+        titleText="Projects"
+        list={projectsList}
+      />
+
     </div>
   );
 }
