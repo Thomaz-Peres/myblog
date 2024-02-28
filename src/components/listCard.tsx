@@ -50,7 +50,7 @@ export const ListCard: FC<ListPropCard> = ({
 
         <section id={section}>
 
-            <h3 className="text-lg font-bold mb-4"><a href={titleLink}>{titleText}</a></h3>
+            <h3 className="text-lg font-bold mb-4 mt-5"><a href={titleLink}>{titleText}</a></h3>
             <div className="grid grid-cols-2 gap-x-14 gap-y-8">
                 {list.map((item) => (
                     <Item

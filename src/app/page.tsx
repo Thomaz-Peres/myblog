@@ -19,7 +19,7 @@ export default function Home() {
         <h3 className="text-lg font-bold mb-2">Books</h3>
       </div> */}
 
-      <div className="my-5 w-full border-t hr border-black-300" />
+      <div className="mt-5 w-full border-t-[3px] hr"/>
 
       <ListCard
         section="Projects"
