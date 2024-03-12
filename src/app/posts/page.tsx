@@ -1,21 +1,44 @@
-import { MDXRemote } from "next-mdx-remote/rsc"
-import { Suspense } from "react"
+import { FC } from 'react'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { GetStaticProps } from 'next';
+import { getPost } from '@/utils/getPosts';
 
+interface PostProp {
+    description: string;
+    title: string;
+    link: string;
+    date: Date;
+    content: MDXRemoteSerializeResult;
+    tags: string[],
+    minutesRead: number
+}
 
-export default function Page() {
+const Page = (props: PostProp) => {
     return (
-        <article>
-            <h1 className="font-title text-3xl text-center mb-4">{} Teste</h1>
-            <Suspense>
-                <MDXRemote 
-                source={`# Lens
-
-                [Lens](https://k8slens.dev/) it's a tool to managing and troubleshooting Kubernetes workloads and many other things.
-
-                Let's start installing Lens, and doing a login (you will need to create an account in lens and take the lens ID).
-
-                You can run in terminal  the command:`}/>
-            </Suspense>
-        </article>
+        <section id="posts">
+            <article>
+                <h1>{props.title}</h1>
+                <p>{props.minutesRead}</p>
+                <p className='mb-1'>{props.date.toDateString()}</p>
+                <MDXRemote {...props.content} />
+            </article>
+        </section>
     );
+}
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+    let fileName = params?.title + '.mdx';
+    const { description, title, link, postDate, content, minutesRead } = getPost(fileName);
+
+    return {
+        props: {
+            description,
+            title,
+            link,
+            postDate,
+            source: await serialize(content),
+            minutesRead,
+        }
+    };
 }
