@@ -6,6 +6,7 @@ import {
     CardHeader,
     CardTitle,
 } from "./ui/card"
+import Link from 'next/link';
 
 export type ItemProps = {
     link: string;
@@ -29,7 +30,7 @@ export const Item: FC<ItemProps> = ({
 }) => {
     return (
         <Card>
-            <a href={link}>
+            <Link href={link}>
                 <CardHeader>
                     <CardTitle>{title}</CardTitle>
                     <CardDescription>{dateTime?.toLocaleDateString('en-US')}</CardDescription>
@@ -37,7 +38,7 @@ export const Item: FC<ItemProps> = ({
                 <CardContent>
                     <p>{description}</p>
                 </CardContent>
-            </a>
+            </Link>
         </Card>
     );
 };
