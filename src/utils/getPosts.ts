@@ -4,7 +4,7 @@ import readingTime from 'reading-time'
 import matter from 'gray-matter'
 
 // POSTS_PATH is useful when you want to get the path to a specific file
-export const POSTS_PATH = path.join(process.cwd(), "src/posts");
+export const POSTS_PATH = path.join(process.cwd(), 'posts');
 
 
 export function getPost(fileName: string) {
@@ -31,7 +31,7 @@ export function getPost(fileName: string) {
 export function getPaths() {
     const postNames = fs.readdirSync(POSTS_PATH);
     const postToGeneratePath = postNames.filter((postName) => {
-        const postDir = path.join(process.cwd(), 'src/posts', postName);
+        const postDir = path.join(process.cwd(), 'posts', postName);
         return fs.existsSync(postDir);
     });
 
