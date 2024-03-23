@@ -2,15 +2,16 @@ import fs from 'fs'
 import path from 'path'
 import readingTime from 'reading-time'
 import matter from 'gray-matter'
+// import { serialize } from 'next-mdx-remote/serialize';
 
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_PATH = path.join(process.cwd(), 'posts');
 
-
 export function getPost(fileName: string) {
-    const postFilePath = path.join(POSTS_PATH, fileName);
+    // const postFilePath = path.join(POSTS_PATH, fileName);
+    // console.log(postFilePath);
 
-    const fileContents = fs.readFileSync(postFilePath);
+    const fileContents = fs.readFileSync(`${POSTS_PATH}/${fileName}`);
     const { data: data, content: source } = matter(fileContents);
     const { minutes } = readingTime(source);
 
@@ -29,7 +30,7 @@ export function getPost(fileName: string) {
 }
 
 export function getPaths() {
-    console.log(POSTS_PATH)
+    // console.log(POSTS_PATH)
     const postNames = fs.readdirSync(POSTS_PATH);
     const postToGeneratePath = postNames.filter((postName) => {
         const postDir = path.join(process.cwd(), 'posts', postName);
@@ -37,16 +38,14 @@ export function getPaths() {
     });
 
     return postToGeneratePath.map((slug) => ({
-        params: {
-            slug: slug.replace(/\.mdx$/, ''),
-        },
+        slug: slug.replace(/\.mdx$/, ''),
     }));
 }
 
 // postFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const postFilePaths = fs
-  .readdirSync(POSTS_PATH)
-  .map(getPost)
-  .sort((post1, post2) => post2.postDate.getTime() - post1.postDate.getTime());
-  // Only include md(x) files
+    .readdirSync(POSTS_PATH)
+    .map(getPost)
+    .sort((post1, post2) => post2.postDate.getTime() - post1.postDate.getTime());
+// Only include md(x) files
 //   .filter((path) => /\.mdx?$/.test(path));
