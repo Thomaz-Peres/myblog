@@ -1,7 +1,6 @@
 'use client'
 
 import { ItemProps, ListCard } from "@/components/listCard";
-import { POSTS_PATH, postFilePaths } from "@/utils/getPosts";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
 // import matter from "gray-matter";
@@ -9,7 +8,6 @@ import { projectsList } from "@/utils/projectlist";
 // import fs from 'fs'
 // import { GetStaticProps } from "next";
 import Link from "next/link";
-import { use } from "react";
 
 export default function Home() {
 
