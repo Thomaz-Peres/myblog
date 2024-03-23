@@ -2,15 +2,15 @@ export const postList = [
     {
         title: 'Kubernetes with Kind',
         description: 'A project using kubernetes and kind',
-        link: '/posts/Kubernetes-With-Kind',
+        slug: '/posts/Kubernetes-With-Kind',
         dateTime: new Date('08/12/2022')
     },
-    // {
-    //     title: 'Json encode and decode',
-    //     description: 'A json encode and decode with TS',
-    //     link: 'https://github.com/Thomaz-Peres/json-parser',
-    //     dateTime: new Date('11/29/2023')
-    // },
+    {
+        title: 'Json encode and decode',
+        description: 'A json encode and decode with TS',
+        slug: 'https://github.com/Thomaz-Peres/json-parser',
+        dateTime: new Date('11/29/2023')
+    },
     // {
     //     title: 'A database from scratch',
     //     description: 'A database from scratch with C and RSpec (tool test with ruby)',

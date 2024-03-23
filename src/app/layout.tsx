@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/themeProvider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import mixPanel from "@/utils/mixpanel";
+import { cookies, headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +20,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
+  const domain = headersList.get('host') || "";
+  const fullUrl = headersList.get('referer') || "";
+
+  console.log(fullUrl);
+  console.log(domain);
+  console.log(headersList.entries());
+  
+  // const router = useRouter();
+  // const isTracked = useRef(false)
+
+    // useEffect(() => {
+      // if (!isTracked.current) {
+        mixPanel.track_pageview(fullUrl);
+        // isTracked.current = true;
+      // };
+    // });
+
   return (
     <html lang="en">
       <body className={cn(inter.className, 'w-full')}>

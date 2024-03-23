@@ -29,6 +29,7 @@ export function getPost(fileName: string) {
 }
 
 export function getPaths() {
+    console.log(POSTS_PATH)
     const postNames = fs.readdirSync(POSTS_PATH);
     const postToGeneratePath = postNames.filter((postName) => {
         const postDir = path.join(process.cwd(), 'posts', postName);
