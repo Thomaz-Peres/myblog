@@ -1,5 +1,5 @@
 import mixpanel, { Dict } from 'mixpanel-browser'
-mixpanel.init('26c21819e483012dfd4a1bae422bfc7d')
+mixpanel.init('')
 
 const mixPanel = {
     identify: (id: string) => {
