@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import {
     Card,
     CardContent,
@@ -22,12 +21,7 @@ type ListPropCard = {
     list: ItemProps[];
 }
 
-export const Item: FC<ItemProps> = ({
-    link,
-    title,
-    description,
-    dateTime,
-}) => {
+export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Element => {
     return (
         <Card>
             <Link href={link}>
@@ -43,14 +37,9 @@ export const Item: FC<ItemProps> = ({
     );
 };
 
-export const ListCard: FC<ListPropCard> = ({
-    section, titleLink,
-    titleText, list
-}) => {
+export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
     return (
-
         <section id={section}>
-
             <h3 className="text-lg font-bold mb-4 mt-5"><a href={titleLink}>{titleText}</a></h3>
             <div className="grid grid-cols-2 gap-x-14 gap-y-8">
                 {list.map((item) => (

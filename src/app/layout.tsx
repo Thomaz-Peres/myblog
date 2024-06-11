@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const headersList = headers();
   const domain = headersList.get('host') || "";
   const fullUrl = headersList.get('referer') || "";

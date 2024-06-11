@@ -1,12 +1,6 @@
-'use client'
-
 import { ItemProps, ListCard } from "@/components/listCard";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
-// import matter from "gray-matter";
-// import path from "path";
-// import fs from 'fs'
-// import { GetStaticProps } from "next";
 import Link from "next/link";
 
 export default function Home() {
