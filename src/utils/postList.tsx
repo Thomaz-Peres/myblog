@@ -2,13 +2,13 @@ export const postList = [
     {
         title: 'Kubernetes with Kind',
         description: 'A project using kubernetes and kind',
-        slug: '/posts/Kubernetes-With-Kind',
+        slug: 'Kubernetes-With-Kind',
         dateTime: new Date('08/12/2022')
     },
     {
-        title: 'Json encode and decode',
+        title: 'Teste',
         description: 'A json encode and decode with TS',
-        slug: 'https://github.com/Thomaz-Peres/json-parser',
+        slug: 'teste',
         dateTime: new Date('11/29/2023')
     },
     // {
