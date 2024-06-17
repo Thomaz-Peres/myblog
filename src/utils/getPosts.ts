@@ -3,11 +3,12 @@ import path from 'path'
 import readingTime from 'reading-time'
 import matter from 'gray-matter'
 import { PostProp } from '@/app/posts/[slug]/page';
+import { serialize } from 'next-mdx-remote/serialize';
 
 
 export const POSTS_PATH = path.join(process.cwd(), 'posts');
 
-export function getPost(fileName: string) {
+export async function getPost(fileName: string) {
     var postFilePath = path.join(POSTS_PATH, fileName);
 
     var fileContents = fs.readFileSync(postFilePath, 'utf8');
@@ -18,11 +19,12 @@ export function getPost(fileName: string) {
     var postDate = new Date(year, month - 1, day);
     var slug = fileName.split('.mdx')[0];
 
+    let serializedSource = await serialize(fileContents);
     var postProp: PostProp = {
         description: data.description,
         title: data.title,
         date: postDate,
-        source: fileContents,
+        source: serializedSource,
         minutesRead: minutes,
         slug: slug
     }
@@ -42,7 +44,7 @@ export function getPaths() {
     }));
 }
 
-export const postFilePaths =
-    fs.readdirSync(POSTS_PATH)
-        .map(getPost)
-        .sort((post1, post2) => post2.date.getTime() - post1.date.getTime());
+// export const postFilePaths =
+//     fs.readdirSync(POSTS_PATH)
+//         .map(getPost)
+//         .sort((post1, post2) => post2.date.getTime() - post1.date.getTime());
