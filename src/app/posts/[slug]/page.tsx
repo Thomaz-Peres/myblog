@@ -1,7 +1,6 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getPost} from '@/utils/getPosts';
 import { MdxContent } from '@/components/content';
-import { useTheme } from 'next-themes';
 
 export interface PostProp {
     description: string;

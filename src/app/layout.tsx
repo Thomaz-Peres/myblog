@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/themeProvider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import mixPanel from "@/utils/mixpanel";
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
