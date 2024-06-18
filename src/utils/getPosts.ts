@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import readingTime from 'reading-time'
 import matter from 'gray-matter'
-import { PostProp } from '@/app/posts/[slug]/page';
 import { serialize } from 'next-mdx-remote/serialize';
 
 
@@ -19,17 +18,14 @@ export async function getPost(fileName: string) {
     var postDate = new Date(year, month - 1, day);
     var slug = fileName.split('.mdx')[0];
 
-    let serializedSource = await serialize(fileContents);
-    var postProp: PostProp = {
+    return {
         description: data.description,
         title: data.title,
         date: postDate,
-        source: serializedSource,
+        source: await serialize(fileContents),
         minutesRead: minutes,
         slug: slug
     }
-
-    return postProp;
 }
 
 export function getPaths() {

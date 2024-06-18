@@ -1,46 +1,36 @@
-import { ItemProps, ListCard } from "@/components/listCard";
+import { ListCard } from "@/components/listCard";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
-import Link from "next/link";
 
 export default function Home() {
 
   return (
-  <>
-    <div>
+    <>
+      <div>
+        <ul>
+          <ListCard
+            section="Posts"
+            titleLink="/posts"
+            titleText="Posts"
+            list={postList}>
+          </ListCard>
+        </ul>
 
-      {/* <ListCard
-      section="Posts"
-      titleLink="/posts"
-      titleText="Posts"
-      list={postList}
-    /> */}
-
-      <ul>
-        {postList.map((post) => (
-          <li key="" >
-            <Link key={post.title} href={`/posts/${post.slug}`} >
-              {post.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/*
+        {/*
     <div>
       <h3 className="text-lg font-bold mb-2">Books</h3>
     </div> */}
 
-      <div className="mt-5 w-full border-t-[3px] hr" />
+        <div className="mt-5 w-full border-t-[3px] hr" />
 
-      <ListCard
-        section="Projects"
-        titleLink="/projects"
-        titleText="Projects"
-        list={projectsList}
-      />
+        <ListCard
+          section="Projects"
+          titleLink="/projects"
+          titleText="Projects"
+          list={projectsList}
+        />
 
-    </div>
-  </>
+      </div>
+    </>
   );
 }

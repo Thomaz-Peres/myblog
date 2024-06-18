@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getPost} from '@/utils/getPosts';
 import { MdxContent } from '@/components/content';
+import { useTheme } from 'next-themes';
 
 export interface PostProp {
     description: string;
@@ -18,7 +19,8 @@ export default async function Page({ params }: { params: { slug : string } }) {
         <section id="posts">
             <article>
                 <h1>{params.slug}</h1>
-                <p className='mb-1'>{"22/11/23"}</p>
+                <p className='mb-1'>{source.date.toLocaleDateString()}</p>
+                <p>Time to read: {Math.round(source.minutesRead)}m</p>
                 <div>
                     <MdxContent source={source.source} />
                 </div>
