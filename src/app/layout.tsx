@@ -20,9 +20,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  const domain = headersList.get('host') || "";
-  const fullUrl = headersList.get('referer') || "";
+  // const headersList = headers();
+  // const domain = headersList.get('host') || "";
+  // const fullUrl = headersList.get('referer') || "";
 
   // console.log(fullUrl);
   // console.log(domain);
@@ -32,7 +32,7 @@ export default function RootLayout({
   // const isTracked = useRef(false)
     // useEffect(() => {
       // if (!isTracked.current) {
-        mixPanel.track_pageview([fullUrl]);
+        // mixPanel.track_pageview([fullUrl]);
         // isTracked.current = true;
       // };
     // });

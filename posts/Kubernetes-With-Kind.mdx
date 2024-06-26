@@ -1,6 +1,6 @@
 ---
 
-title: "1. - A simple way to running kubernetes locally with Kind (and Lens)"
+title: "A simple way to running kubernetes locally with Kind (and Lens)"
 date: 03-11-2024
 description: 'teste'
 
@@ -10,6 +10,7 @@ description: 'teste'
 This not a tutorial about kubernetes, kind or a API with .NET. It's just something help me to study somethings about kubernetes.
 
 #### Prev tools need installed
+
 - [Kubernetes](https://kubernetes.io/)
 - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [Docker](https://docs.docker.com/get-docker/)
@@ -24,9 +25,12 @@ First, let's create a simple API with .NET. (Really simple, I wont change anythi
 
 Run in terminal:
 
-	dotnet new webapi
+```
+dotnet new webapi
+```
 
 Add the Dockerfile:
+
 ```Dockerfile
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
@@ -44,15 +48,20 @@ ENTRYPOINT ["dotnet", "api1.dll"]
 
 And run the docker command to create the image:
 
-	docker build -t api:1.0 \{`Dockerfile local`}
+```
+docker build -t api:1.0 \{`Dockerfile local`}
+```
 
 If you want to test the API:
-
+```
 	docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0
+```
 
 And after:
 
-	curl http://localhost:8001/weatherforecast
+```
+curl http://localhost:8001/weatherforecast
+```
 ___
 
 After API and the docker image created, let's create a Cluster with this yaml:
@@ -67,19 +76,26 @@ nodes:
 
 After to create the yaml, run the command:
 
-	kind create cluster --name api --config=Cluster/DeployCluster.yaml
+```
+kind create cluster --name api --config=Cluster/DeployCluster.yaml
+```
 
 If you want to check the Cluster, just run:
 
-	kubectl cluster-info -context kind-api
+```
+kubectl cluster-info -context kind-api
+```
 
 After this steps, we need to add the app image in the cluster, with the command:
 
-	kind load docker-image api:1.0 --name api
+```
+kind load docker-image api:1.0 --name api
+```
 
 Now, let's working more with the kubernetes, and create the *Deployment* and the *Service* yamls:
 
 Deployment.yaml:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -121,10 +137,14 @@ spec:
 
 And after created the yamls files for the *Deployment* and *Service*, let's running the files:
 
-	kubectl apply -f Deployment.yaml
-And
+```
+kubectl apply -f Deployment.yaml
+```
 
-	kubectl apply -f Service.yaml
+And
+```
+kubectl apply -f Service.yaml
+```
 
 You can check the services and deployments with `kubectl get deployments` and `kubectl get svc`.
 
@@ -132,11 +152,15 @@ Checking the **Services** you will see not have an **External-IP** what need to 
 
 This command `port-forward` is used to connect your local computer to Docker bridge default gateway.
 
-	sudo -E kubectl port-forward svc/api-service 8001:80
+```
+sudo -E kubectl port-forward svc/api-service 8001:80
+```
 
 Now, you can run:
 
-	curl http://localhost:8001/WeatherForecast
+```
+curl http://localhost:8001/WeatherForecast
+```
 
 If you running the .NET api, the response will look like this:
 
@@ -185,11 +209,13 @@ Let's start installing Lens, and doing a login (you will need to create an accou
 
 You can run in terminal  the command:
 
-	k config view --output yaml
+```
+k config view --output yaml
+```
 
 This command print your kubernetes configuration, we will need this to add in the Lens, or you can connect the kube folder or copy the kube config and paste too (normally the config was find in `$HOME/.kube/config`).
 
 With this, you will have the Cluster connection, and you can see something like this and many other things
 
-![](../images/LensImge2.png)
-![](../images/LensImge2.png)
+![image](https://github.com/Thomaz-Peres/myblog/assets/58439854/4256e99f-da6e-4786-bf71-109a920b628d)
+![image2](../images/LensImge2.png)
