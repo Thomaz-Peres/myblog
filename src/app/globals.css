@@ -35,7 +35,7 @@
   }
 
   .dark {
-    --background: 250 60% 8%;
+    --background: 233 61% 11%;
     --foreground: 210 20% 98%;
 
     --card: 265 90% 4%;
@@ -72,12 +72,20 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-smooth-blue;
   }
 }
 
 @layer components {
   .nav-link {
-    @apply flex space-x-7 text-sm font-medium py-2.5 pl-2 pr-4
+    @apply flex space-x-7 text-sm font-medium py-2.5 pl-2.5 pr-4 focus:bg-little-blue2 bg-little-blue2 rounded-lg
+  }
+
+  .nav-link-ul {
+    @apply flex flex-wrap space-y-2
+  }
+
+  .nav-link-li {
+    @apply w-full px-6
   }
 }

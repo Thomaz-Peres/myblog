@@ -6,6 +6,11 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    colors: {
+      'smooth-blue': '#0b0d1c',
+      'little-blue': '#101329',
+      'little-blue2': '#1c213d',
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

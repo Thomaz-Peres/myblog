@@ -23,7 +23,7 @@ export function Sidebar() {
         // </>
 
         <>
-            <aside id="sidebar" className="flex bg-gray-900 h-dvh w-full max-w-[17rem] flex-col rounded-r-xl">
+            <aside id="sidebar" className="flex bg-little-blue h-dvh w-full max-w-[17rem] flex-col rounded-r-xl border-r-2 border-r-solid border-r-[#1c213d]">
                 <header className="flex flex-col items-center my-10">
                     <a id="photo" href="/">
                         {/* className="rounded min-[320px]:w-60 max-[600px]:w-60 md:w-60 md:h-60"/> */}
@@ -33,12 +33,24 @@ export function Sidebar() {
                     <h2 className="text-xl font-bold mt-3">Thomaz Peres</h2>
                     <p className="text-xs">Software Engineer</p>
                 </header>
-                <nav id="nav" className="flex flex-col grow">
-                    <ul>
-                        <li className="w-full px-6 w-52 h-10 opacity-8">
-                            <a href="/" className="nav-link box-border rounded-md active:bg-violet-700">
+                <nav id="nav" className="flex-col grow w-100">
+                    <ul className="nav-link-ul">
+                        <li className="nav-link-li">
+                            <a href="/" className="nav-link">
                                 <HomeIcon className="size-5" />
                                 <span>HOME</span>
+                            </a>
+                        </li>
+                        <li className="nav-link-li">
+                            <a href="/" className="nav-link">
+                                <HomeIcon className="size-5" />
+                                <span>TESTE</span>
+                            </a>
+                        </li>
+                        <li className="nav-link-li">
+                            <a href="/" className="nav-link">
+                                <HomeIcon className="size-5" />
+                                <span>TESTE2</span>
                             </a>
                         </li>
                     </ul>
