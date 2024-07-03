@@ -23,8 +23,8 @@ export function Sidebar() {
         // </>
 
         <>
-            <aside id="sidebar" className="flex bg-gray-900 h-dvh w-full max-w-[20rem] flex-col rounded-r-xl">
-                <header className="flex flex-col items-center mt-10">
+            <aside id="sidebar" className="flex bg-gray-900 h-dvh w-full max-w-[17rem] flex-col rounded-r-xl">
+                <header className="flex flex-col items-center my-10">
                     <a id="photo" href="/">
                         {/* className="rounded min-[320px]:w-60 max-[600px]:w-60 md:w-60 md:h-60"/> */}
                         <Image src={profilePic} width={192} height={192} alt="Me in chile"
@@ -33,10 +33,13 @@ export function Sidebar() {
                     <h2 className="text-xl font-bold mt-3">Thomaz Peres</h2>
                     <p className="text-xs">Software Engineer</p>
                 </header>
-                <nav id="nav" className="flex flex-col pl-10 mt-10">
+                <nav id="nav" className="flex flex-col grow">
                     <ul>
-                        <li className="opacity-85">
-                            <a href="/" className="nav-link"><HomeIcon className="size-6" /> <span>HOME</span></a>
+                        <li className="w-full px-6 w-52 h-10 opacity-8">
+                            <a href="/" className="nav-link box-border rounded-md active:bg-violet-700">
+                                <HomeIcon className="size-5" />
+                                <span>HOME</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>

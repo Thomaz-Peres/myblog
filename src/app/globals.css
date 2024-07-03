@@ -78,6 +78,6 @@
 
 @layer components {
   .nav-link {
-    @apply flex items-center space-x-7
+    @apply flex space-x-7 text-sm font-medium py-2.5 pl-2 pr-4
   }
 }
