@@ -1,12 +1,15 @@
+import { Footer } from "@/components/footer";
 import { ListCard } from "@/components/listCard";
+import { Sidebar } from "@/components/sidebar";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
 
 export default function Home() {
-
   return (
     <>
-      <div>
+      <Sidebar />
+
+      <main className="ml-96 xl:w-7/12 lg:w-4/5 w-11/12">
         <ul>
           <ListCard
             section="Posts"
@@ -30,7 +33,8 @@ export default function Home() {
           list={projectsList}
         />
 
-      </div>
+        <Footer />
+      </main>
     </>
   );
 }

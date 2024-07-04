@@ -1,7 +1,7 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getPost } from '@/utils/getPosts';
 import { serialize } from 'next-mdx-remote/serialize';
-import { MdxContent, useMDXComponents } from '@/components/content';
+import { MdxContent, useMDXComponents } from '@/components/mdxContent';
 // import MdxContent from '@/components/content';
 
 export interface PostProp {
