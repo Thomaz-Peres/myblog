@@ -13,7 +13,7 @@ export const projectsList = [
     },
     {
         title: 'A database from scratch',
-        description: 'A database from scratch with C and RSpec (tool test with ruby)',
+        description: 'A database from scratch with C and RSpec',
         link: 'https://github.com/Thomaz-Peres/simple-database-from-scratch',
         dateTime: new Date('07/21/2023')
     },

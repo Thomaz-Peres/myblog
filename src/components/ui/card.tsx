@@ -23,7 +23,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center w-full p-6 pb-4 mt-1", className)}
+    className={cn("flex items-center w-full p-6 pb-4 mt-1 justify-between", className)}
     {...props}
   />
 ))
@@ -47,7 +47,7 @@ const CardDate = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("flex pl-16 text-sm text-muted-foreground items-center", className)}
+    className={cn("flex text-sm text-muted-foreground items-center", className)}
     {...props}
   />
 ))

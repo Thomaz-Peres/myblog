@@ -8,6 +8,7 @@ import {
 } from "./ui/card"
 import Link from 'next/link';
 import { FaCalendar, FaTags } from "react-icons/fa6";
+import { Button } from "./ui/button";
 
 
 export type ItemProps = {
@@ -29,7 +30,7 @@ export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Elem
         <Card>
             <Link href={link}>
                 <CardHeader>
-                    <CardTitle>{title}</CardTitle>
+                    <CardTitle className="tracking-wide">{title}</CardTitle>
                     <CardDate><FaCalendar className="size-3 mr-2"/>{dateTime?.toLocaleDateString('en-US')}</CardDate>
                 </CardHeader>
                 <CardContent>
@@ -44,8 +45,8 @@ export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Elem
 export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
     return (
         <section id={section}>
-            <h3 className="mt-5 text-lg font-bold mb-4">
-                <a href={titleLink} className="mt-10">
+            <h3 className="mt-5 text-lg font-bold mb-4 ">
+                <a href={titleLink} className="mt-10 ">
                     {titleText}
                 </a>
             </h3>
@@ -61,7 +62,7 @@ export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard
                 ))}
             </div>
 
-            <p className="italic underline mt-10"><a href={titleLink} > Ver mais {'->'} </a></p>
+            <Button className="mt-10"><a href={titleLink} className="text-sm"> Ver mais {'->'} </a></Button>
         </section>
     );
 };

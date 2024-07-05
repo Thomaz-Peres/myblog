@@ -7,14 +7,25 @@ import {
     FaFolder, FaBookOpen, FaMoon,
     FaTag, FaBook, FaGithub,
     FaLinkedin, FaSun, FaSquareRss,
-    FaCircleUser
+    FaCircleUser, FaHouse
 } from "react-icons/fa6";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
+const navigations = [
+    { name: "home"    , path: "/"        , icon: FaHouse      },
+    { name: "about"   , path: "/about"   , icon: FaCircleUser },
+    { name: "posts"   , path: "/posts"   , icon: FaBookOpen   },
+    { name: "projects", path: "/projects", icon: FaFolder     },
+    { name: "tags"    , path: "/tags"    , icon: FaTag        },
+    { name: "books"   , path: "/books"   , icon: FaBook       },
+]
 
 export function Sidebar() {
     const { theme, setTheme } = useTheme();
     const changeTheme = () => setTheme(theme === "light" ? "dark" : "light");
+    var pathName = usePathname();
+    var active = (path: string) => path === pathName ? 'active' : "disable";
 
     return (
         //         {/* <p className="mt-3">My name is Thomaz Peres, I am a Software Engineer professionally since <strong>october/2020</strong>. Within all those years, I have developed and architected different high performance and scalable applications. I’m a <strong>full-stack developer</strong> with a strong focus on the back-end. I have experience with <strong>.NET Framework/Core, SQL, Docker, Kubernetes, Redis, Azure, Unit/Performance/Automation Tests and Scrum/Kanban</strong>. Also, used TypeScript, JavaScript, HTML, CSS, React, Angular, Tailwind and MixPanel.</p> */}
@@ -31,36 +42,14 @@ export function Sidebar() {
                 </header>
                 <nav id="nav" className="flex-col grow w-100">
                     <ul className="nav-link-ul">
-                        <li className="nav-link-li">
-                            <a href="/about" className="nav-link">
-                                <FaCircleUser className="size-5" />
-                                <span>ABOUT</span>
-                            </a>
-                        </li>
-                        <li className="nav-link-li">
-                            <a href="/" className="nav-link">
-                                <FaBookOpen className="size-5" />
-                                <span>POSTS</span>
-                            </a>
-                        </li>
-                        <li className="nav-link-li">
-                            <a href="/" className="nav-link">
-                                <FaFolder className="size-5" />
-                                <span>PROJECTS</span>
-                            </a>
-                        </li>
-                        <li className="nav-link-li">
-                            <a href="/" className="nav-link">
-                                <FaTag className="size-5" />
-                                <span>TAGS</span>
-                            </a>
-                        </li>
-                        <li className="nav-link-li">
-                            <a href="/" className="nav-link">
-                                <FaBook className="size-5" />
-                                <span>BOOKS</span>
-                            </a>
-                        </li>
+                        {navigations.map((path) => (
+                            <li key={path.name} className="nav-link-li">
+                                <a href={path.path} id={path.name} className="nav-link" data-state={active(path.path)}>
+                                    <path.icon className="size-5"/>
+                                    <span>{path.name.toLocaleUpperCase()}</span>
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] });
+const fira_Code = JetBrains_Mono({ subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Thomaz",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'w-full', 'h-full')}>
+      <body className={cn(fira_Code.className, 'w-full', 'h-full')}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Sidebar />
           {children}
