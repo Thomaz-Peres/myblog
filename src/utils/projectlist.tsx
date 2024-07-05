@@ -23,9 +23,4 @@ export const projectsList = [
         link: 'https://github.com/Thomaz-Peres/Theme',
         dateTime: new Date('08/12/2020')
     },
-    {
-        title: 'Study Notes',
-        description: 'A repository to write my study notes',
-        link: 'https://github.com/Thomaz-Peres/Study-Notes',
-    },
 ];

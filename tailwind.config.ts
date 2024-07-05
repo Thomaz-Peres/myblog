@@ -6,11 +6,6 @@ module.exports = {
   ],
   prefix: "",
   theme: {
-    colors: {
-      'smooth-blue': '#0b0d1c',
-      'little-blue': '#101329',
-      'little-blue2': '#1c213d',
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -19,6 +14,8 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         sidebar: "hsl(var(--sidebar))",
+        sidecard: "hsl(var(--sidecard))",
+        sidebord: "hsl(var(--sidebord))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

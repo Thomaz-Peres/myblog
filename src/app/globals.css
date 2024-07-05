@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 85%;
     --foreground: 224 71.4% 4.1%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 88%;
     --card-foreground: 224 71.4% 4.1%;
 
     --popover: 0 0% 100%;
@@ -28,19 +28,21 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 220 13% 91%;
+    --border: 220 0% 74%;
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
 
-    --sidebar: 233 44% 11%;
+    --sidebar: 00 00% 88%;
+    --sidecard: 00 00% 90%;
+    --sidebord: 0 0% 0%;
   }
 
   .dark {
     --background: 233 44% 8%;
     --foreground: 210 20% 98%;
 
-    --card: 265 90% 4%;
+    --card: 233 44% 11%;
     --card-foreground: 210 20% 98%;
 
     --popover: 224 71.4% 4.1%;
@@ -61,11 +63,13 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 200 27.9% 16.9%;
+    --border: 236 33% 20%;
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
 
     --sidebar: 233 44% 11%;
+    --sidecard: 231 37% 17%;
+    --sidebord: 231 37% 25%;
   }
 }
 
@@ -78,11 +82,15 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .nav-link {
+    @apply bg-sidecard
+  }
 }
 
 @layer components {
   .nav-link {
-    @apply flex space-x-7 text-sm font-medium py-2.5 pl-2.5 pr-4 focus:bg-little-blue2 bg-little-blue2 rounded-lg
+    @apply flex space-x-7 text-sm font-medium py-2.5 pl-2.5 pr-4 rounded-lg
   }
 
   .nav-link-ul {
