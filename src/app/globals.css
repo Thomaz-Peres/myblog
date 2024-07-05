@@ -32,10 +32,12 @@
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
+
+    --sidebar: 233 44% 11%;
   }
 
   .dark {
-    --background: 233 61% 11%;
+    --background: 233 44% 8%;
     --foreground: 210 20% 98%;
 
     --card: 265 90% 4%;
@@ -62,17 +64,19 @@
     --border: 200 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
+
+    --sidebar: 233 44% 11%;
   }
 }
 
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border
   }
 
   body {
-    @apply bg-smooth-blue;
+    @apply bg-background text-foreground;
   }
 }
 
