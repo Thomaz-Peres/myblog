@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "next-themes";
+import { BreadcrumbComponent } from "@/components/breadcrumb";
 
 const fira_Code = JetBrains_Mono({ subsets: ["latin"]});
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={cn(fira_Code.className, 'w-full', 'h-full')}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Sidebar />
+          <BreadcrumbComponent className="mt-10 ml-105 xl:w-7/12 lg:w-4/5 w-11/12"></BreadcrumbComponent>
           {children}
         </ThemeProvider>
       </body>

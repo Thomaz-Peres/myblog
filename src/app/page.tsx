@@ -1,6 +1,5 @@
 import { Footer } from "@/components/footer";
 import { ListCard } from "@/components/listCard";
-import { Sidebar } from "@/components/sidebar";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
 
