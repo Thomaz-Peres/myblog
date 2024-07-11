@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "next-themes";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
+import { Footer } from "@/components/footer";
 
-const fira_Code = JetBrains_Mono({ subsets: ["latin"]});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Thomaz",
@@ -20,11 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(fira_Code.className, 'w-full', 'h-full')}>
+      <body className={cn(inter.className, 'w-full', 'h-full')}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Sidebar />
-          <BreadcrumbComponent className="mt-10 ml-105 xl:w-7/12 lg:w-4/5 w-11/12"></BreadcrumbComponent>
           {children}
+          <Footer />
+
         </ThemeProvider>
       </body>
     </html>

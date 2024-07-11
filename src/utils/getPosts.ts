@@ -13,14 +13,13 @@ export function getPost(fileName: string) {
     var { data: data, content: source } = matter(fileContents);
     var { minutes } = readingTime(source);
 
-    var [day, month, year] = data.date.split('-');
-    var postDate = new Date(year, month - 1, day);
+    var date = new Date(data.date).toISOString().substring(0, 10);
     var slug = fileName.split('.mdx')[0];
 
     return {
         description: data.description,
         title: data.title,
-        date: postDate,
+        date: date,
         source: source,
         minutesRead: minutes,
         slug: slug

@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from "react";
 
 import {
@@ -8,31 +10,34 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator
 } from "./ui/breadcrumb";
-import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
-const BreadcrumbComponent = React.forwardRef<
-    HTMLParagraphElement,
-    React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-    <div className={cn(className)}
-        ref={ref}
-        {...props}>
-        <Breadcrumb>
-            <BreadcrumbList>
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-                </BreadcrumbItem>
-            </BreadcrumbList>
-        </Breadcrumb>
-    </div>
-))
+function BreadcrumbComponent() {
+    let paths = usePathname();
+    var pathNames = paths.split('/');
+    return (
+        <>
+            <div>
+                <Breadcrumb>
+                    <BreadcrumbList>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        {/* // TODO: Fazer depois */}
+                        {/* <BreadcrumbSeparator /> */}
+                        {/* <BreadcrumbItem>
+                            {pathNames.map((path) => {
+                                console.log(path);
+                                path = path.replace(path[0], path[0]);
+                                return (<BreadcrumbPage key={path}>{path}</BreadcrumbPage>)
+                            })
+                            }
+                        </BreadcrumbItem> */}
+                    </BreadcrumbList>
+                </Breadcrumb>
+            </div>
+        </>
+    );
+};
 
 export { BreadcrumbComponent };

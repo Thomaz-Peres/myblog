@@ -42,7 +42,7 @@ export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Elem
     );
 };
 
-export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
+export const ListHomeCards = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
     return (
         <section id={section}>
             <h3 className="mt-5 text-lg font-bold mb-4 ">
@@ -51,7 +51,7 @@ export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard
                 </a>
             </h3>
             <div className="grid grid-cols-2 gap-x-14 gap-y-8">
-                {list.map((item) => (
+                {list.slice(0,4).map((item) => (
                     <Item
                         key={item.link}
                         title={item.title}
@@ -63,6 +63,29 @@ export const ListCard = ( { section, titleLink, titleText, list } : ListPropCard
             </div>
 
             <Button className="mt-10"><a href={titleLink} className="text-sm"> Ver mais {'->'} </a></Button>
+        </section>
+    );
+};
+
+export const ListUnlimitedCards = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
+    return (
+        <section id={section}>
+            <h3 className="mt-5 text-lg font-bold mb-4 ">
+                <a href={titleLink} className="mt-10 ">
+                    {titleText}
+                </a>
+            </h3>
+            <div className="grid gap-x-14 gap-y-8">
+                {list.map((item) => (
+                    <Item
+                        key={item.link}
+                        title={item.title}
+                        description={item.description}
+                        link={item.link}
+                        dateTime={item.dateTime}
+                    />
+                ))}
+            </div>
         </section>
     );
 };
