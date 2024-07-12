@@ -5,7 +5,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 export function MdxContent({ source }: { source: MDXRemoteSerializeResult }) {
     return (
-        <MDXRemote {...source} components={useMDXComponents} />
+        <MDXRemote {...source} />
     )
 }
  
