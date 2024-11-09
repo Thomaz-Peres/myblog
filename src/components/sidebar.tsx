@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa6";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const navigations = [
     { name: "home"    , path: "/"        , icon: FaHouse      },
@@ -31,13 +32,13 @@ export function Sidebar() {
         <>
             <aside id="sidebar" className="fixed top-0 left-0 flex bg-sidebar h-full max-w-[17rem] flex-col rounded-r-xl border-r-2 border-r-solid border-r-sidebord">
                 <header className="flex flex-col items-center my-10">
-                    <a id="photo" href="/">
+                    <Link id="photo" href="/">
                         {/* className=""/> */}
                         <Image src={profilePic} width={192} height={192}
                             alt="Me in chile"
                             className="rounded-full"
                         />
-                    </a>
+                    </Link>
                     <h2 className="text-xl font-bold mt-3">Thomaz Peres</h2>
                     <p className="text-xs">Software Engineer</p>
                 </header>
@@ -47,10 +48,10 @@ export function Sidebar() {
                             let isDisabled = path.path == "/tags" || path.path == "/books";
                             return (
                                 <li key={path.name} className="nav-link-li">
-                                    <a href={isDisabled ? '/' : path.path} id={path.name} className="nav-link" data-state={active(path.path)}>
+                                    <Link href={isDisabled ? '/' : path.path} id={path.name} className="nav-link" data-state={active(path.path)}>
                                         <path.icon className="size-5" />
                                         <span>{path.name.toLocaleUpperCase()}</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             )
                         })
@@ -59,13 +60,13 @@ export function Sidebar() {
                 </nav>
 
                 <footer className="flex space-x-2 p-7 items-center justify-center">
-                    <a href="https://www.github.com/Thomaz-Peres"><FaGithub className="size-5" /> </a>
+                    <Link href="https://www.github.com/Thomaz-Peres"><FaGithub className="size-5" /> </Link>
                     <p className="text-xs">•</p>
-                    <a href="https://www.linkedin.com/in/thomazperes/"><FaLinkedin className="size-5" /></a>
+                    <Link href="https://www.linkedin.com/in/thomazperes/"><FaLinkedin className="size-5" /></Link>
                     <p className="text-xs">•</p>
-                    <a href="/"><FaSquareRss className="size-5" /></a>
+                    <Link href="/"><FaSquareRss className="size-5" /></Link>
                     <p className="text-xs">•</p>
-                    <a onClick={changeTheme} href="/"><FaSun className="size-5" /></a>
+                    <Link onClick={changeTheme} href="/"><FaSun className="size-5" /></Link>
                     {/* <p className="text-xs">•</p>
                     <a href="https://www.linkedin.com/in/thomazperes/"><FaMoon className="size-5" /></a> */}
                 </footer>

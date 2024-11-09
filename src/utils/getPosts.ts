@@ -2,40 +2,51 @@ import fs from 'fs'
 import path from 'path'
 import readingTime from 'reading-time'
 import matter from 'gray-matter'
-import { serialize } from 'next-mdx-remote/serialize';
+import { ItemProps } from '@/components/listCard';
 
-export const POSTS_PATH = path.join(process.cwd(), 'posts');
+export const POSTS_PATH = path.join(process.cwd(), "posts");
 
-export async function getPost(fileName: string) {
+export const getPost = (fileName: string) => {
 
     var postFilePath = path.join(POSTS_PATH, `${fileName}.mdx`);
-    var fileContents = fs.readFileSync(postFilePath, 'utf8');
+    var fileContent = fs.readFileSync(postFilePath, { encoding: "utf8" });
 
-    var { data: data, content } = matter(fileContents);
+    var { data, content } = matter(fileContent);
     var { minutes } = readingTime(content);
 
-    var date = new Date(data.date).toISOString().substring(0, 10);
-    var slug = fileName.split('.mdx')[0];
+    var slug = fileName.replace(".mdx", "");
 
-    return {
+    const postSource: PostSource = {
         description: data.description,
         title: data.title,
-        date: date,
-        // source: await serialize(content),
+        date: data.date,
         source: content,
         minutesRead: minutes,
         slug: slug
     }
+    return postSource;
 }
 
-export function getPaths() {
+export interface PostSource {
+    description: string,
+    title: string,
+    date: string,
+    source: string,
+    minutesRead: number,
+    slug: string
+}
+
+export const getPaths = () => {
     var postNames = fs.readdirSync(POSTS_PATH);
-    var postToGeneratePath = postNames.filter((postName) => {
-        var postDir = path.join(process.cwd(), 'posts', postName);
-        return fs.existsSync(postDir);
+
+    var posts: ItemProps[] = [];
+
+    postNames.map((post) => {
+        post = post.replace(".mdx", "");
+        const postSourc = getPost(post);
+        const postProps : ItemProps = { description: postSourc.description, link: "posts/" + postSourc.slug, title: postSourc.slug, dateTime: new Date(postSourc.date) }
+        posts.push(postProps);
     });
 
-    return postToGeneratePath.map((slug) => ({
-        slug: slug.replace(/\.mdx$/, ''),
-    }));
+    return posts;
 }

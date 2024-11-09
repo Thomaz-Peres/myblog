@@ -1,8 +1,10 @@
 import { ListHomeCards } from "@/components/listCard";
+import { getPaths } from "@/utils/getPosts";
 import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
 
 export default function Home() {
+  console.log();
   return (
     <>
       <div className="mt-10 ml-105 xl:w-7/12 lg:w-4/5 w-11/12">
@@ -11,7 +13,7 @@ export default function Home() {
             section="Posts"
             titleLink="/posts"
             titleText="Posts"
-            list={postList}
+            list={getPaths()}
           />
         </ul>
 

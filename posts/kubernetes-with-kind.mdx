@@ -1,7 +1,7 @@
 ---
 title: "A simple way to running kubernetes locally with Kind (and Lens)"
-date: 03-11-2024
-description: 'teste'
+date: "03/11/2024"
+description: "A project using kubernetes and kind"
 ---
 
 This isn't a tutorial about kubernetes, kind, or an API with .NET. It's just something that helped me when I was studying Kubernetes
@@ -52,7 +52,9 @@ docker build -t api:1.0 .
 To test the API, run:
 
 ```
-docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0
+docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0
+
+docker run --rm -it -p 8001:80 -e ASPNETCORE_HTTP_PORTS=80 api:1.0
 ```
 
 Then run:
@@ -203,7 +205,7 @@ With this, you have a cluster running locally.
 
 Let's start by installing Lens and logging in (you will need to create an account in lens and onstain a lens ID).
 
-You can run the following command in the terminakl:
+You can run the following command in the terminal:
 
 ```
 k config view --output yaml
@@ -212,7 +214,6 @@ k config view --output yaml
 This command print your kubernetes configuration. We will need this to add to Lens. You can either connect the kube folder or copy the kube config and paste it (normally the config is found in `$HOME/.kube/config`).
 
 With this, you will have the Cluster connection, and you can see something like this and many other things.
-
 
 ![Image lens 1](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/i8hft7xl3a3awy1d2eln.png)
 ![Image lens 2](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wh28h1n5mf9dnk9hfefh.png)
