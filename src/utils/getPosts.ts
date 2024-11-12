@@ -44,7 +44,7 @@ export const getPaths = () => {
     postNames.map((post) => {
         post = post.replace(".mdx", "");
         const postSourc = getPost(post);
-        const postProps : ItemProps = { description: postSourc.description, link: "posts/" + postSourc.slug, title: postSourc.slug, dateTime: new Date(postSourc.date) }
+        const postProps : ItemProps = { description: postSourc.description, link: "posts/" + postSourc.slug, title: postSourc.title, dateTime: new Date(postSourc.date) }
         posts.push(postProps);
     });
 

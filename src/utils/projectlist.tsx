@@ -1,6 +1,6 @@
 export const projectsList = [
     {
-        title: 'Kubernetes with Kind',
+        title: 'Kubernetes with kind',
         description: 'A project using kubernetes and kind',
         link: 'https://github.com/Thomaz-Peres/Kubernetes-Kind',
         dateTime: new Date('08/12/2022')
@@ -18,7 +18,7 @@ export const projectsList = [
         dateTime: new Date('07/21/2023')
     },
     {
-        title: 'My Theme for VsCode',
+        title: 'My theme for VsCode',
         description: 'My theme for vscode with more 200k downloads',
         link: 'https://github.com/Thomaz-Peres/Theme',
         dateTime: new Date('08/12/2020')

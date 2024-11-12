@@ -1,6 +1,5 @@
 import { ListHomeCards } from "@/components/listCard";
 import { getPaths } from "@/utils/getPosts";
-import { postList } from "@/utils/postList";
 import { projectsList } from "@/utils/projectlist";
 
 export default function Home() {

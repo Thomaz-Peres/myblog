@@ -33,6 +33,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    ".posts/*.mdx",
     ".next/types/**/*.ts"
   ],
   "exclude": [

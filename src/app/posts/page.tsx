@@ -1,6 +1,6 @@
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { ListUnlimitedCards } from "@/components/listCard";
-import { postList } from "@/utils/postList";
+import { getPaths } from "@/utils/getPosts";
 
 export default function Page() {
     return (
@@ -11,7 +11,7 @@ export default function Page() {
                         section="Posts"
                         titleLink="/posts"
                         titleText="Posts"
-                        list={postList}
+                        list={getPaths()}
                     />
                 </ul>
             </div>

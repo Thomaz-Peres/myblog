@@ -4,7 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "next-themes";
-import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });

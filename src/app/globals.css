@@ -71,6 +71,12 @@
   strong {
     @apply underline
   }
+
+  article ul {
+    list-style: disc;
+    margin: 16px;
+    padding: 0px 0px 0px 40px;
+  }
 }
 
 @layer components {
@@ -86,3 +92,5 @@
     @apply w-full px-6
   }
 }
+
+@layer utilities {}
