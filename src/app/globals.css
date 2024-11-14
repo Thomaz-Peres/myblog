@@ -29,6 +29,8 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --code-color: hsla(0, 0%, 86%, 0.4);
+    --code-border-color: hsl(0, 0%, 83%);
   }
 
   .dark {
@@ -56,6 +58,8 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --code-color: hsl(207 95% 8%);
+    --code-border-color: hsl(0 0% 42%);
   }
 }
 
@@ -72,10 +76,169 @@
     @apply underline
   }
 
+  article h1, h2, h3, h4, h5, h6,
+  p, ol, ul, pre {
+    margin-top: 0;
+  }
+
   article ul {
     list-style: disc;
+    padding: 0px 0px 0px 2.5rem;
+  }
+
+  article p {
+    margin-bottom: 1.25rem;
+  }
+
+  article h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  article #code-csp-warning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: white;
     margin: 16px;
-    padding: 0px 0px 0px 40px;
+    text-align: center;
+    font-size: 12px;
+    font-family: sans-serif;
+    background-color:#444444;
+    cursor: pointer;
+    padding: 6px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+  }
+
+  article #code-csp-warning:hover {
+    text-decoration: none;
+    background-color:#007acc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+  }
+
+  article img, video {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  article a {
+    text-decoration: none;
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+
+  article a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: -1px;
+  }
+
+  article li p {
+    margin-bottom: 0.7em;
+  }
+
+  article ul,
+  article ol {
+    margin-bottom: 0.7em;
+  }
+
+  article hr {
+    border: 0;
+    height: 1px;
+    border-bottom: 2px solid;
+    margin: 2rem 0px;
+  }
+
+  article h1 {
+    font-size: 2em;
+    margin-top: 0;
+    padding-bottom: 0.3em;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  article h2 {
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+
+  article h3 {
+    font-size: 1.25em;
+  }
+
+  article h4 {
+    font-size: 1em;
+  }
+
+  article h5 {
+    font-size: 0.875em;
+  }
+
+  article h6 {
+    font-size: 0.85em;
+  }
+
+  article table {
+    border-collapse: collapse;
+    margin-bottom: 0.7em;
+  }
+
+  article th {
+    text-align: left;
+    border-bottom: 1px solid;
+  }
+
+  article th,
+  article td {
+    padding: 5px 10px;
+  }
+
+  article table > tbody > tr + tr > td {
+    border-top: 1px solid;
+  }
+
+  article blockquote {
+    margin: 0;
+    padding: 0px 16px 0 10px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-radius: 2px;
+  }
+
+  article code {
+    font-size: 1em;
+    line-height: 1.357em;
+    color: primary;
+    background: none;
+  }
+
+  article pre code {
+    display: inline-block;
+    tab-size: 4;
+    background-color: none;
+  }
+
+  /** Theming */
+
+  article pre {
+    background-color: var(--code-color);
+    border: 1px solid var(--code-border-color);
+    margin: 1em 0px;
+  }
+
+  pre:not(.hljs),
+  pre.hljs code > div {
+    padding: 16px;
+    border-radius: 6px;
+    overflow: auto;
   }
 }
 
