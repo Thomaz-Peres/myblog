@@ -15,7 +15,7 @@ export type ItemProps = {
     link: string;
     title: string;
     description: string;
-    dateTime?: Date;
+    dateTime: Date;
 };
 
 type ListPropCard = {
@@ -23,6 +23,7 @@ type ListPropCard = {
     titleLink: string;
     titleText: string;
     list: ItemProps[];
+    maxItems: number;
 }
 
 export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Element => {
@@ -42,32 +43,11 @@ export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Elem
     );
 };
 
-export const ListHomeCards = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
-    return (
-        <section id={section}>
-            <h3 className="mt-5 text-lg font-bold mb-4 ">
-                <a href={titleLink} className="mt-10 ">
-                    {titleText}
-                </a>
-            </h3>
-            <div className="grid grid-cols-2 gap-x-14 gap-y-8">
-                {list.slice(0,4).map((item) => (
-                    <Item
-                        key={item.link}
-                        title={item.title}
-                        description={item.description}
-                        link={item.link}
-                        dateTime={item.dateTime}
-                    />
-                ))}
-            </div>
+export const ListCards = ( { section, titleLink, titleText, list, maxItems } : ListPropCard): JSX.Element => {
+    var sortedItems = list.slice()
+        .sort((a, b) => b.dateTime.getTime() - a.dateTime.getTime())
+        .slice(0, maxItems);
 
-            <Button className="mt-10"><a href={titleLink} className="text-sm"> Ver mais {'->'} </a></Button>
-        </section>
-    );
-};
-
-export const ListUnlimitedCards = ( { section, titleLink, titleText, list } : ListPropCard): JSX.Element => {
     return (
         <section id={section}>
             <h3 className="mt-5 text-lg font-bold mb-4 ">
@@ -76,7 +56,7 @@ export const ListUnlimitedCards = ( { section, titleLink, titleText, list } : Li
                 </a>
             </h3>
             <div className="grid gap-x-14 gap-y-8">
-                {list.map((item) => (
+                {sortedItems.map((item) => (
                     <Item
                         key={item.link}
                         title={item.title}

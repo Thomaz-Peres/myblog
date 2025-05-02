@@ -1,4 +1,4 @@
-import { ListUnlimitedCards } from "@/components/listCard";
+import { ListUnlimitedCards } from "@/components/ListCard";
 import { projectsList } from "@/utils/projectlist";
 
 export default function Page() {

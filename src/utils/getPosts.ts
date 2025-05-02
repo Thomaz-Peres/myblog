@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import readingTime from 'reading-time'
 import matter from 'gray-matter'
-import { ItemProps } from '@/components/listCard';
+import { ItemProps } from '@/components/ListCard';
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");
 

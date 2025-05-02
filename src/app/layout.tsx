@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "next-themes";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={cn(inter.className, 'w-full', 'h-full')}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <Sidebar />
-          {children}
-          <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(inter.className, "bg-background text-foreground")}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark">
+          <div className="h-screen max-w-7xl w-full px-6 sm:px-6 md:px-8 mx-auto">
+            <Header />
+            {children}
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

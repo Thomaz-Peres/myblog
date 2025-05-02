@@ -1,20 +1,19 @@
-import { BreadcrumbComponent } from "@/components/breadcrumb";
-import { ListUnlimitedCards } from "@/components/listCard";
+import { BreadcrumbComponent } from "@/components/Breadcrumb";
+import { ListCards } from "@/components/ListCard";
 import { getPaths } from "@/utils/getPosts";
 
-export default function Page() {
+export default function Posts() {
     return (
-        <>
-            <div className="mt-10 ml-105 xl:w-7/12 lg:w-4/5 w-11/12 mb-10">
-                <ul>
-                    <ListUnlimitedCards
-                        section="Posts"
-                        titleLink="/posts"
-                        titleText="Posts"
-                        list={getPaths()}
-                    />
-                </ul>
-            </div>
-        </>
+        <div>
+            <ul>
+                <ListCards
+                    section="Posts"
+                    titleLink="/posts"
+                    titleText="Posts"
+                    list={getPaths()}
+                    maxItems={5}
+                />
+            </ul>
+        </div>
     )
 }
