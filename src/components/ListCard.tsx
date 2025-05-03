@@ -7,15 +7,13 @@ import {
     CardTitle,
 } from "./ui/card"
 import Link from 'next/link';
-import { FaCalendar, FaTags } from "react-icons/fa6";
-import { Button } from "./ui/button";
-
+import { FaCalendar } from "react-icons/fa6";
 
 export type ItemProps = {
     link: string;
     title: string;
-    description: string;
     dateTime: Date;
+    tags: string
 };
 
 type ListPropCard = {
@@ -26,31 +24,39 @@ type ListPropCard = {
     maxItems: number;
 }
 
-export const Item = ({ link, title, description, dateTime}: ItemProps): JSX.Element => {
+export const Item = ({ link, title, dateTime, tags }: ItemProps): JSX.Element => {
     return (
         <Card>
-            <Link href={link}>
-                <CardHeader>
-                    <CardTitle className="tracking-wide">{title}</CardTitle>
-                    <CardDate><FaCalendar className="size-3 mr-2"/>{dateTime?.toLocaleDateString('en-US')}</CardDate>
-                </CardHeader>
-                <CardContent>
-                    <p>{description}</p>
-                </CardContent>
-                <CardFooter><FaTags/></CardFooter>
-            </Link>
+            <CardHeader>
+                <Link href={link}>
+                    <CardTitle className="tracking-wide">
+                        {title}
+                    </CardTitle>
+                </Link>
+                <CardDate>
+                    <FaCalendar className="text-muted-foreground mr-3" />
+                    {dateTime?.toLocaleDateString('en-US')}
+                </CardDate>
+            </CardHeader>
+            <CardFooter>
+                {tags.split(",").map((str) =>
+                    <a href={"tags/" + str} className="mr-2 py-0.5 px-2 text-[0.80rem] rounded-xl border bg-card">
+                        {str}
+                    </a>
+                )}
+            </CardFooter>
         </Card>
     );
 };
 
-export const ListCards = ( { section, titleLink, titleText, list, maxItems } : ListPropCard): JSX.Element => {
+export const ListCards = ({ section, titleLink, titleText, list, maxItems }: ListPropCard): JSX.Element => {
     var sortedItems = list.slice()
         .sort((a, b) => b.dateTime.getTime() - a.dateTime.getTime())
         .slice(0, maxItems);
 
     return (
         <section id={section}>
-            <h3 className="mt-5 text-lg font-bold mb-4 ">
+            <h3 className="mt-5 text-lg font-bold mb-4">
                 <a href={titleLink} className="mt-10 ">
                     {titleText}
                 </a>
@@ -60,9 +66,9 @@ export const ListCards = ( { section, titleLink, titleText, list, maxItems } : L
                     <Item
                         key={item.link}
                         title={item.title}
-                        description={item.description}
                         link={item.link}
                         dateTime={item.dateTime}
+                        tags={item.tags}
                     />
                 ))}
             </div>

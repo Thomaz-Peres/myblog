@@ -23,7 +23,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center w-full p-6 pb-4 mt-1 justify-between", className)}
+    className={cn("flex items-center w-full p-6 mt-1 justify-between", className)}
     {...props}
   />
 ))
@@ -33,9 +33,9 @@ const CardTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
-  <h3
+  <h1
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn("font-bold leading-none tracking-tight", className)}
     {...props}
   />
 ))
@@ -47,7 +47,7 @@ const CardDate = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("flex text-sm text-muted-foreground items-center", className)}
+    className={cn("flex text-sm items-center", className)}
     {...props}
   />
 ))

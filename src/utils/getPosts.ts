@@ -6,6 +6,15 @@ import { ItemProps } from '@/components/ListCard';
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");
 
+export interface PostSource {
+    title: string,
+    date: string,
+    source: string,
+    minutesRead: number,
+    slug: string,
+    tags: string
+}
+
 export const getPost = (fileName: string) => {
 
     var postFilePath = path.join(POSTS_PATH, `${fileName}.mdx`);
@@ -17,23 +26,14 @@ export const getPost = (fileName: string) => {
     var slug = fileName.replace(".mdx", "");
 
     const postSource: PostSource = {
-        description: data.description,
         title: data.title,
         date: data.date,
         source: content,
         minutesRead: minutes,
-        slug: slug
+        slug: slug,
+        tags: data.tags
     }
     return postSource;
-}
-
-export interface PostSource {
-    description: string,
-    title: string,
-    date: string,
-    source: string,
-    minutesRead: number,
-    slug: string
 }
 
 export const getPaths = () => {
@@ -44,7 +44,7 @@ export const getPaths = () => {
     postNames.map((post) => {
         post = post.replace(".mdx", "");
         const postSourc = getPost(post);
-        const postProps : ItemProps = { description: postSourc.description, link: "posts/" + postSourc.slug, title: postSourc.title, dateTime: new Date(postSourc.date) }
+        const postProps : ItemProps = { link: "posts/" + postSourc.slug, title: postSourc.title, dateTime: new Date(postSourc.date), tags: postSourc.tags }
         posts.push(postProps);
     });
 
