@@ -1,5 +1,4 @@
 import { BreadcrumbComponent } from "@/components/Breadcrumb";
-import { getPaths } from "@/utils/getPosts";
 import { listTags } from "@/utils/getTags";
 import Link from "next/link";
 
@@ -8,15 +7,15 @@ export default function Tags() {
     <div id="tags">
         <ul>
             {listTags().map((str) =>
-            <div>
+            <>
                 {str.tag.split(',').map((tag) =>
-                    <div className="">
-                        <Link href={tag}>
+                    <div key={tag} className="">
+                        <Link key={tag} href={tag}>
                             {tag}
                         </Link>
                     </div>
                 )}
-            </div>
+            </>
             )}
         </ul>
     </div>

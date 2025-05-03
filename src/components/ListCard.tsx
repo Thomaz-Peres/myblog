@@ -1,6 +1,5 @@
 import {
     Card,
-    CardContent,
     CardDate,
     CardFooter,
     CardHeader,
@@ -40,9 +39,9 @@ export const Item = ({ link, title, dateTime, tags }: ItemProps): JSX.Element =>
             </CardHeader>
             <CardFooter>
                 {tags.split(",").map((str) =>
-                    <a href={"tags/" + str} className="mr-2 py-0.5 px-2 text-[0.80rem] rounded-xl border bg-card">
+                    <Link key={str} href={"tags/" + str} className="mr-2 py-0.5 px-2 text-[0.80rem] rounded-xl border bg-card">
                         {str}
-                    </a>
+                    </Link>
                 )}
             </CardFooter>
         </Card>
