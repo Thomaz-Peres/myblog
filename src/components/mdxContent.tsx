@@ -3,11 +3,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 export function MdxContent({ source }: { source: string }) {
   return (
     <article>
-      <MDXRemote source={source}/>
+      <MDXRemote source={source} components={components}/>
     </article>
   )
 }
 
-export const Components = {
-  h1: (props: any) => <h1 className="text-5xl" {...props} />,
+const components = {
+  // pre: (props: any) => CodeWrapper(props),
 }

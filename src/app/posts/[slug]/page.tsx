@@ -1,5 +1,6 @@
 import { getPost } from '@/utils/getPosts';
 import { MdxContent } from '@/components/mdxContent';
+import Link from 'next/link';
 
 type Params = Promise<{ slug: string }>
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
@@ -22,13 +23,16 @@ export default async function Page(props: {
     const post = await getPost(`${params.slug}`);
 
     return (
-        <section id="posts" className="mt-16 ml-105 xl:w-7/12 lg:w-4/5 w-11/12">
-            <p className="font-bold text-4xl">{post.title}</p>
-            <p className='flex space-x-2 mt-2 items-center text-sm'>{post.date} • {Math.round(post.minutesRead)} min read</p>
-            <p className="flex text-xs"></p>
-            <p className="flex"></p>
-            <div className="mt-5 w-full border-t-[3px] hr mb-5" />
-              <MdxContent source={post.source} />
+        <section id="posts" className="w-[80ch] max-w-full mt-16">
+          <p className="font-bold text-4xl">{post.title}</p>
+          <p className='flex mt-2 items-center text-sm'>{post.date} • {Math.round(post.minutesRead)} min read</p>
+          <div className='flex space-x-2 mt-2 items-center text-sm underline'>
+              {post.tags.split(',').map((tag) =>
+                <Link key={tag} href={'/tags/' + tag}>#{tag}</Link>
+              )}
+          </div>
+          <div className="mt-5 w-full border-t-[3px] hr mb-5" />
+          <MdxContent source={post.source} />
         </section>
     );
 }
