@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
@@ -29,8 +29,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --code-color: hsla(0, 0%, 86%, 0.4);
-    --code-border-color: hsl(0, 0%, 83%);
+    --code-color: hsl(214, 86%, 92%);
+    --code-border-color: hsl(0 0% 42%);
+    --code-text-color: hsl(0, 0%, 0%);
   }
 
   .dark {
@@ -60,6 +61,7 @@
     --chart-5: 340 75% 55%;
     --code-color: hsl(209, 88%, 10%);
     --code-border-color: hsl(0 0% 42%);
+    --code-text-color: hsl(263.4 70% 50.4%);
   }
 }
 
@@ -124,11 +126,12 @@
   }
 
   article a {
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   article a:hover {
     text-decoration: underline;
+    color: rgb(177, 204, 253);
   }
 
   article a:focus,
@@ -216,27 +219,25 @@
   article code {
     font-size: 1em;
     line-height: 1.357em;
-    color: primary;
-    background: none;
-  }
-
-  article pre code {
-    display: inline-block;
+    background-color: var(--code-color);
+    padding: 0.08rem 0.35rem;
+    border-radius: 0.25rem;
+    color: var(--code-text-color);
     tab-size: 4;
-    background-color: none;
+    display: inline-block;
   }
-
-  /** Theming */
 
   article pre {
+    padding: 0rem;
     background-color: var(--code-color);
     margin: 1em 0em;
+    font-size: 1em;
   }
 
   pre:not(.hljs),
   pre.hljs code > div {
     padding: 16px;
-    border-radius: 3px;
+    /* border-radius: 3px; */
     /* white-space: pre-wrap;
     word-wrap: break-word; */
     overflow: auto;
