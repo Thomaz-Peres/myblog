@@ -61,7 +61,7 @@
     --chart-5: 340 75% 55%;
     --code-color: hsl(209, 88%, 10%);
     --code-border-color: hsl(0 0% 42%);
-    --code-text-color: hsl(263.4 70% 50.4%);
+    --code-text-color: hsl(0, 0%, 100%);
   }
 }
 
