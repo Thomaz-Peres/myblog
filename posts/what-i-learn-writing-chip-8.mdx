@@ -1,0 +1,107 @@
+---
+title: "What I learned writing a Chip-8 emulator"
+date: "07/02/2025"
+description: "I learn more about CPUs and assembly when writing the Chip-8 emulator"
+tags: "CPU, emulator, chip8, assembly, learning"
+---
+
+# Introduction
+
+One day, I decided to start learning about emulators, inspired by Ryujinx. After some research, I noticed that most people start with Chip-8. And after reading about it on Wikipedia, I thought, "Why not? This looks fun." While building the emulator, I learned more about CPUs and assembly.
+
+Also, I haven't been writing much C# code recently outside of work, and this is a good opportunity to try some things I usually don't like in C# at work. `Probably, I will write this in Rust, C, or Go sometime in the future.`
+
+> I will not explain Chip-8 itself in detail, but I will use some examples based on what I learned while building the Chip-8 emulator. If you want to read more about it, you can check here: https://en.wikipedia.org/wiki/CHIP-8
+
+## CPU
+
+At first, I thought emulating the CPU would be hard to do. But once I understood some concepts, I realized I was wrong.
+
+I learned how a CPU utilizes and separates memory, and how assembly and the CPU communicate.
+
+The CPU separates memory like this (this comes from [here](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1.0)):
+
+Memory Map:
++---------------+= 0xFFF (4095) End of Chip-8 RAM
+|               |
+|               |
+|               |
+|               |
+|               |
+| 0x200 to 0xFFF|
+|     Chip-8    |
+| Program / Data|
+|     Space     |
+|               |
+|               |
+|               |
++- - - - - - - -+= 0x600 (1536) Start of ETI 660 Chip-8 programs
+|               |
+|               |
+|               |
++---------------+= 0x200 (512) Start of most Chip-8 programs
+| 0x000 to 0x1FF|
+| Reserved for  |
+|  interpreter  |
++---------------+= 0x000 (0) Start of Chip-8 RAM
+
+## Registers in Chip-8
+
+A CPU has registers, which are generally used to store memory addresses.
+
+Registers are small, fast storage locations inside the CPU that hold data the CPU is actively working with. Think of them as the CPU's "hands", holding values temporarily while performing tasks.
+
+The Chip-8 CPU has 16 general-purpose 8-bit registers, named V0 through VF. These are used to store temporary values during program execution.
+
+For example:
+
+- `V0` to `VE` can hold values like counters, intermediate results, or pixel data.
+- `VF` is special and is used as a flag. For example, it can indicate a carry in addition or a collision in sprite drawing.
+
+### Example: Using Registers
+
+Consider the instruction `7XNN` (ADD Vx, NN). This instruction adds the value `NN` to the value in register `VX` and stores the result back in `VX`.
+
+For example:
+
+- If `VX` contains `5` and `NN` is `3`, the CPU will add them together and store `8` in `VX`.
+
+Registers allow the CPU to perform operations quickly without needing to access slower memory like RAM.
+
+[Chip-8 instructions](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#3.1)
+
+## The Stack and Subroutines
+
+Chip-8 uses a stack to handle subroutine
+
+The stack is a small area of memory where the CPU stores the address of the instruction to return to after a subroutine finishes.
+
+## How Instructions Work in the CPU
+
+CPUs have a list of separate codes, usually called instructions.
+
+Instructions are used to tell the CPU what to do. These codes are usually represented in assembly for human readability.
+
+To execute the instructions, the CPU uses the `Fetch-Decode-Execute` cycle.
+
+**Fetch ->** The system retrieves the next instruction from the program memory. The location is determined by the program counter, which stores the address that identifies the next instruction to be fetched. After fetching, the Program Counter is incremented by the length of the instruction (In Chip-8, 2 bytes).
+
+**Decode ->** Decode converts the 16-bit instruction to a high-level representation using some structure -- in Chip-8, the OpCode.
+
+**Execute ->** Here, the instruction is executed.
+
+> [Program Counter](#the-role-of-the-program-counter)
+
+For example, the Chip-8 instruction `1NNN` corresponds to:
+
+`1NNN` -> JP addr
+
+This means "Jump to address NNN." When a Chip-8 program contains the instruction `1NNN`, it tells the CPU to set the Program Counter to the address `NNN`.
+
+
+## The Role of the Program Counter
+
+The Program Counter (PC) holds the memory address of the next instruction to execute. Most instructions increment the PC by 2 (each instruction is 2 bytes). `JP` or `CALL` modify the PC to control flow.
+
+
+> Here you can see my [Chip-8 emulator](https://github.com/Thomaz-Peres/chip8)
